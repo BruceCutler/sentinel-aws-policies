@@ -1,3 +1,11 @@
+/***************************************************************************************
+*    Title: tfconfig-functions.sentinel
+*    Author: Roger Berlind
+*    Date: 01/19/2021
+*    Availability: https://github.com/hashicorp/terraform-guides/blob/master/governance/third-generation/common-functions/tfstate-functions/tfstate-functions.sentinel
+*
+***************************************************************************************/
+
 # Common functions that use the tfstate/v2 import
 
 # The filter functions all accept a collection of resources, an attribute,
