@@ -1,13 +1,13 @@
 {
     "modules": {
       "tfplan-functions": {
-        "path": "../../../common-functions/tfplan-functions/tfplan-functions.sentinel"
+        "path": "../../../modules/common_functions/tfplan-functions/tfplan-functions.sentinel"
       },
       "tfconfig-functions": {
-        "path": "../../../common-functions/tfconfig-functions/tfconfig-functions.sentinel"
+        "path": "../../../modules/common_functions/tfconfig-functions/tfconfig-functions.sentinel"
       },
       "aws-functions": {
-        "path": "../../aws-functions/aws-functions.sentinel"
+        "path": "../../../modules/aws_functions/aws-functions.sentinel"
       }
     },
     "mock": {
