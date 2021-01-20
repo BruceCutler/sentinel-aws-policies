@@ -1,0 +1,68 @@
+import "tfplan-functions" as plan
+import "tfconfig-functions" as config
+import "tfconfig/v2" as tfconfig
+import "strings"
+
+violatingResources = []
+
+### extract_module_name ###
+# Retrieve the module name from the module address, taking the last token
+# to account for scenarios where nested modules exist
+extract_module_name = func(resource_module_address) {
+    module_address_list = strings.split(resource_module_address, ".")
+    module_address_list_length = length(module_address_list)
+
+    return module_address_list[module_address_list_length - 1]
+}
+
+### validate_module_source ###
+# Ensure that a module call exists that matches the provided module name, before
+# validating that a matching module call has a source indicating the module
+# came from the Private Module Registry
+validate_module_source = func(module_name) {
+    matching_module_call = filter tfconfig.module_calls as address, mc {
+        mc.name is module_name
+    }
+
+    case length(matching_module_call) {
+        when 0:
+            print("No module call was found that matches the provided module name. Exiting!")
+            return false
+        else:
+            module_source = matching_module_call[module_name]["source"]
+            #print("Matching module call:",matching_module_call)
+            
+            if module_source not matches "^app.terraform.io/bcutler-test/ecs-cluster/aws$" {
+                print("Module",module_name,"does not have a source that matches the Private Module Registry! Exiting!")
+                return false
+            } else {
+                return true
+            } 
+    }
+}
+
+# Discover any ECS Clusters in the Terraform plan
+ecs_clusters_in_plan = plan.find_resources("aws_ecs_cluster")
+
+# If there are ECS Clusters in the plan, validate the module sources
+for ecs_clusters_in_plan as address, resource {
+    module_address = resource.module_address
+
+    case module_address {
+        when "":
+            print("ECS Cluster",address,"was not created using a module!")
+            append(violatingResources,address)
+        else :
+            module_name = extract_module_name(module_address)
+            #print("Module Name:", module_name)
+            valid_module_call = validate_module_source(module_name)
+
+            if not valid_module_call {
+                append(violatingResources,address)
+            }
+    }
+}
+
+main = rule {
+    length(violatingResources) is 0
+}
