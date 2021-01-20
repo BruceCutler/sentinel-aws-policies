@@ -1,0 +1,424 @@
+terraform_version = "0.14.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"module.ecs-cluster.aws_ecs_cluster.new_cluster": {
+			"address":        "module.ecs-cluster.aws_ecs_cluster.new_cluster",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.ecs-cluster",
+			"name":           "new_cluster",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_ecs_cluster",
+			"values": {
+				"capacity_providers": [
+					"FARGATE",
+				],
+				"default_capacity_provider_strategy": [],
+				"name": "testapp01-dev-clus01a",
+				"setting": [
+					{
+						"name":  "containerInsights",
+						"value": "enabled",
+					},
+				],
+				"tags": {
+					"CostCenter":  "1234",
+					"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+					"ProjectCode": "testapp01",
+				},
+			},
+		},
+	},
+}
+
+variables = {
+	"application_name": {
+		"name":  "application_name",
+		"value": "testapp01",
+	},
+	"aws_region": {
+		"name":  "aws_region",
+		"value": "us-east-1",
+	},
+	"ecs_cluster_identifier": {
+		"name":  "ecs_cluster_identifier",
+		"value": "clus01a",
+	},
+	"env": {
+		"name":  "env",
+		"value": "dev",
+	},
+}
+
+resource_changes = {
+	"module.ecs-cluster.aws_ecs_cluster.new_cluster": {
+		"address": "module.ecs-cluster.aws_ecs_cluster.new_cluster",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"capacity_providers": [
+					"FARGATE",
+				],
+				"default_capacity_provider_strategy": [],
+				"name": "testapp01-dev-clus01a",
+				"setting": [
+					{
+						"name":  "containerInsights",
+						"value": "enabled",
+					},
+				],
+				"tags": {
+					"CostCenter":  "1234",
+					"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+					"ProjectCode": "testapp01",
+				},
+			},
+			"after_unknown": {
+				"arn": true,
+				"capacity_providers": [
+					false,
+				],
+				"default_capacity_provider_strategy": [],
+				"id": true,
+				"setting": [
+					{},
+				],
+				"tags": {},
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.ecs-cluster",
+		"name":           "new_cluster",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_ecs_cluster",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"references": [
+							"var.aws_region",
+						],
+					},
+				},
+				"name": "aws",
+			},
+		},
+		"root_module": {
+			"module_calls": {
+				"ecs-cluster": {
+					"expressions": {
+						"application_name": {
+							"references": [
+								"var.application_name",
+							],
+						},
+						"cluster_identifier": {
+							"references": [
+								"var.ecs_cluster_identifier",
+							],
+						},
+						"environment": {
+							"references": [
+								"var.env",
+							],
+						},
+					},
+					"module": {
+						"outputs": {
+							"new_cluster_arn": {
+								"description": "Amazon Resource Name (ARN) of new ECS Cluster",
+								"expression": {
+									"references": [
+										"aws_ecs_cluster.new_cluster",
+									],
+								},
+							},
+						},
+						"resources": [
+							{
+								"address": "aws_ecs_cluster.new_cluster",
+								"expressions": {
+									"capacity_providers": {
+										"constant_value": [
+											"FARGATE",
+										],
+									},
+									"name": {
+										"references": [
+											"var.application_name",
+											"var.environment",
+											"var.cluster_identifier",
+										],
+									},
+									"setting": [
+										{
+											"name": {
+												"constant_value": "containerInsights",
+											},
+											"value": {
+												"constant_value": "enabled",
+											},
+										},
+									],
+									"tags": {
+										"references": [
+											"var.custom_tags",
+											"local.mandatory_tags",
+										],
+									},
+								},
+								"mode":                "managed",
+								"name":                "new_cluster",
+								"provider_config_key": "ecs-cluster:aws",
+								"schema_version":      0,
+								"type":                "aws_ecs_cluster",
+							},
+							{
+								"address":             "data.aws_caller_identity.current",
+								"mode":                "data",
+								"name":                "current",
+								"provider_config_key": "ecs-cluster:aws",
+								"schema_version":      0,
+								"type":                "aws_caller_identity",
+							},
+							{
+								"address": "data.aws_ssm_parameter.cost_center",
+								"expressions": {
+									"name": {
+										"references": [
+											"var.application_name",
+										],
+									},
+								},
+								"mode":                "data",
+								"name":                "cost_center",
+								"provider_config_key": "ecs-cluster:aws",
+								"schema_version":      0,
+								"type":                "aws_ssm_parameter",
+							},
+							{
+								"address": "data.aws_ssm_parameter.project_code",
+								"expressions": {
+									"name": {
+										"references": [
+											"var.application_name",
+										],
+									},
+								},
+								"mode":                "data",
+								"name":                "project_code",
+								"provider_config_key": "ecs-cluster:aws",
+								"schema_version":      0,
+								"type":                "aws_ssm_parameter",
+							},
+						],
+						"variables": {
+							"application_name": {
+								"description": "Name of the application that the ECS Cluster will be created for",
+							},
+							"cluster_identifier": {
+								"description": "Unique identifier for the new ECS Cluster",
+							},
+							"custom_tags": {
+								"default":     {},
+								"description": "Additional tags to add to the new ECS Cluster resource",
+							},
+							"environment": {
+								"description": "Environment level that the ECS Cluster is being created for",
+							},
+						},
+					},
+					"source":             "app.terraform.io/bcutler-test/ecs-cluster/aws",
+					"version_constraint": "0.0.2",
+				},
+			},
+			"variables": {
+				"application_name": {},
+				"aws_region": {
+					"default": "us-east-1",
+				},
+				"ecs_cluster_identifier": {},
+				"env": {},
+			},
+		},
+	},
+	"format_version": "0.1",
+	"planned_values": {
+		"root_module": {
+			"child_modules": [
+				{
+					"address": "module.ecs-cluster",
+					"resources": [
+						{
+							"address":        "module.ecs-cluster.aws_ecs_cluster.new_cluster",
+							"mode":           "managed",
+							"name":           "new_cluster",
+							"provider_name":  "registry.terraform.io/hashicorp/aws",
+							"schema_version": 0,
+							"type":           "aws_ecs_cluster",
+							"values": {
+								"capacity_providers": [
+									"FARGATE",
+								],
+								"default_capacity_provider_strategy": [],
+								"name": "testapp01-dev-clus01a",
+								"setting": [
+									{
+										"name":  "containerInsights",
+										"value": "enabled",
+									},
+								],
+								"tags": {
+									"CostCenter":  "1234",
+									"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+									"ProjectCode": "testapp01",
+								},
+							},
+						},
+					],
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "0.1",
+		"terraform_version": "0.14.4",
+		"values": {
+			"root_module": {
+				"child_modules": [
+					{
+						"address": "module.ecs-cluster",
+						"resources": [
+							{
+								"address":        "module.ecs-cluster.data.aws_caller_identity.current",
+								"mode":           "data",
+								"name":           "current",
+								"provider_name":  "registry.terraform.io/hashicorp/aws",
+								"schema_version": 0,
+								"type":           "aws_caller_identity",
+								"values": {
+									"account_id": "522295397264",
+									"arn":        "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+									"id":         "522295397264",
+									"user_id":    "AROAXTGZ3JOIFPJFU7FQ2:bruce.cutler@slalom.com",
+								},
+							},
+							{
+								"address":        "module.ecs-cluster.data.aws_ssm_parameter.cost_center",
+								"mode":           "data",
+								"name":           "cost_center",
+								"provider_name":  "registry.terraform.io/hashicorp/aws",
+								"schema_version": 0,
+								"type":           "aws_ssm_parameter",
+								"values": {
+									"arn":             "arn:aws:ssm:us-east-1:522295397264:parameter/testapp01/cost_center",
+									"id":              "/testapp01/cost_center",
+									"name":            "/testapp01/cost_center",
+									"type":            "String",
+									"value":           "1234",
+									"version":         1,
+									"with_decryption": true,
+								},
+							},
+							{
+								"address":        "module.ecs-cluster.data.aws_ssm_parameter.project_code",
+								"mode":           "data",
+								"name":           "project_code",
+								"provider_name":  "registry.terraform.io/hashicorp/aws",
+								"schema_version": 0,
+								"type":           "aws_ssm_parameter",
+								"values": {
+									"arn":             "arn:aws:ssm:us-east-1:522295397264:parameter/testapp01/project_code",
+									"id":              "/testapp01/project_code",
+									"name":            "/testapp01/project_code",
+									"type":            "String",
+									"value":           "testapp01",
+									"version":         2,
+									"with_decryption": true,
+								},
+							},
+						],
+					},
+				],
+			},
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "module.ecs-cluster.aws_ecs_cluster.new_cluster",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"capacity_providers": [
+						"FARGATE",
+					],
+					"default_capacity_provider_strategy": [],
+					"name": "testapp01-dev-clus01a",
+					"setting": [
+						{
+							"name":  "containerInsights",
+							"value": "enabled",
+						},
+					],
+					"tags": {
+						"CostCenter":  "1234",
+						"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+						"ProjectCode": "testapp01",
+					},
+				},
+				"after_unknown": {
+					"arn": true,
+					"capacity_providers": [
+						false,
+					],
+					"default_capacity_provider_strategy": [],
+					"id": true,
+					"setting": [
+						{},
+					],
+					"tags": {},
+				},
+				"before": null,
+			},
+			"mode":           "managed",
+			"module_address": "module.ecs-cluster",
+			"name":           "new_cluster",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"type":           "aws_ecs_cluster",
+		},
+	],
+	"terraform_version": "0.14.4",
+	"variables": {
+		"application_name": {
+			"value": "testapp01",
+		},
+		"aws_region": {
+			"value": "us-east-1",
+		},
+		"ecs_cluster_identifier": {
+			"value": "clus01a",
+		},
+		"env": {
+			"value": "dev",
+		},
+	},
+}

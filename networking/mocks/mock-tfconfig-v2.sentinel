@@ -1,0 +1,199 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"references": [
+					"var.aws_region",
+				],
+			},
+		},
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_subnet.subnet_a": {
+		"address": "aws_subnet.subnet_a",
+		"config": {
+			"cidr_block": {
+				"constant_value": "10.50.0.0/24",
+			},
+			"tags": {
+				"references": [
+					"var.env",
+					"var.application_name",
+					"data.aws_ssm_parameter.project_code",
+					"data.aws_ssm_parameter.cost_center",
+					"data.aws_caller_identity.current",
+				],
+			},
+			"vpc_id": {
+				"references": [
+					"aws_vpc.new_vpc",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "subnet_a",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_subnet",
+	},
+	"aws_subnet.subnet_b": {
+		"address": "aws_subnet.subnet_b",
+		"config": {
+			"cidr_block": {
+				"constant_value": "10.50.1.0/25",
+			},
+			"tags": {
+				"references": [
+					"var.env",
+					"var.application_name",
+					"data.aws_ssm_parameter.project_code",
+					"data.aws_ssm_parameter.cost_center",
+					"data.aws_caller_identity.current",
+				],
+			},
+			"vpc_id": {
+				"references": [
+					"aws_vpc.new_vpc",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "subnet_b",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_subnet",
+	},
+	"aws_vpc.new_vpc": {
+		"address": "aws_vpc.new_vpc",
+		"config": {
+			"cidr_block": {
+				"constant_value": "10.50.0.0/16",
+			},
+			"instance_tenancy": {
+				"constant_value": "default",
+			},
+			"tags": {
+				"references": [
+					"var.env",
+					"var.application_name",
+					"data.aws_ssm_parameter.project_code",
+					"data.aws_ssm_parameter.cost_center",
+					"data.aws_caller_identity.current",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "new_vpc",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_vpc",
+	},
+	"data.aws_caller_identity.current": {
+		"address":             "data.aws_caller_identity.current",
+		"config":              {},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "",
+		"name":                "current",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_caller_identity",
+	},
+	"data.aws_ssm_parameter.cost_center": {
+		"address": "data.aws_ssm_parameter.cost_center",
+		"config": {
+			"name": {
+				"references": [
+					"var.application_name",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "",
+		"name":                "cost_center",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_ssm_parameter",
+	},
+	"data.aws_ssm_parameter.project_code": {
+		"address": "data.aws_ssm_parameter.project_code",
+		"config": {
+			"name": {
+				"references": [
+					"var.application_name",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "",
+		"name":                "project_code",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_ssm_parameter",
+	},
+}
+
+provisioners = {}
+
+variables = {
+	"application_name": {
+		"default":        null,
+		"description":    "",
+		"module_address": "",
+		"name":           "application_name",
+	},
+	"aws_region": {
+		"default":        "us-east-1",
+		"description":    "",
+		"module_address": "",
+		"name":           "aws_region",
+	},
+	"env": {
+		"default":        null,
+		"description":    "",
+		"module_address": "",
+		"name":           "env",
+	},
+}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

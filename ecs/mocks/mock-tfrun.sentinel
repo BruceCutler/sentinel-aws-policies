@@ -1,0 +1,41 @@
+id = "run-8vvg3fNr1YfmMtyQ"
+created_at = "2021-01-20T13:58:14.533Z"
+message = "Queued manually in Terraform Cloud"
+commit_sha = "ea9ef471b69e043929a1529d0d4f4be7f8846873"
+speculative = false
+is_destroy = false
+target_addrs = null
+
+variables = {
+	"AWS_ACCESS_KEY_ID": {
+		"category":  "env",
+		"sensitive": true,
+	},
+	"AWS_SECRET_ACCESS_KEY": {
+		"category":  "env",
+		"sensitive": true,
+	},
+	"AWS_SESSION_TOKEN": {
+		"category":  "env",
+		"sensitive": true,
+	},
+}
+
+organization = {
+	"name": "bcutler-test",
+}
+
+workspace = {
+	"auto_apply":  false,
+	"created_at":  "2021-01-19T22:05:00.231Z",
+	"description": null,
+	"id":          "ws-FSWJ5ZdVZvXehByt",
+	"name":        "testapp01-dev-shared-infrastructure",
+	"vcs_repo": {
+		"branch":             "main",
+		"display_identifier": "BruceCutler/sample_terraform_configs",
+		"identifier":         "BruceCutler/sample_terraform_configs",
+		"ingress_submodules": false,
+	},
+	"working_directory": "/shared_infra",
+}

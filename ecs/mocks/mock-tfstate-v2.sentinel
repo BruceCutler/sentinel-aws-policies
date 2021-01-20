@@ -1,0 +1,66 @@
+terraform_version = "0.14.4"
+
+outputs = {}
+
+resources = {
+	"module.ecs-cluster.aws_caller_identity.current": {
+		"address":        "module.ecs-cluster.aws_caller_identity.current",
+		"depends_on":     [],
+		"deposed_key":    "",
+		"index":          null,
+		"mode":           "data",
+		"module_address": "module.ecs-cluster",
+		"name":           "current",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"tainted":        false,
+		"type":           "aws_caller_identity",
+		"values": {
+			"account_id": "522295397264",
+			"arn":        "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+			"id":         "522295397264",
+			"user_id":    "AROAXTGZ3JOIFPJFU7FQ2:bruce.cutler@slalom.com",
+		},
+	},
+	"module.ecs-cluster.aws_ssm_parameter.cost_center": {
+		"address":        "module.ecs-cluster.aws_ssm_parameter.cost_center",
+		"depends_on":     [],
+		"deposed_key":    "",
+		"index":          null,
+		"mode":           "data",
+		"module_address": "module.ecs-cluster",
+		"name":           "cost_center",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"tainted":        false,
+		"type":           "aws_ssm_parameter",
+		"values": {
+			"arn":             "arn:aws:ssm:us-east-1:522295397264:parameter/testapp01/cost_center",
+			"id":              "/testapp01/cost_center",
+			"name":            "/testapp01/cost_center",
+			"type":            "String",
+			"value":           "1234",
+			"version":         1,
+			"with_decryption": true,
+		},
+	},
+	"module.ecs-cluster.aws_ssm_parameter.project_code": {
+		"address":        "module.ecs-cluster.aws_ssm_parameter.project_code",
+		"depends_on":     [],
+		"deposed_key":    "",
+		"index":          null,
+		"mode":           "data",
+		"module_address": "module.ecs-cluster",
+		"name":           "project_code",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"tainted":        false,
+		"type":           "aws_ssm_parameter",
+		"values": {
+			"arn":             "arn:aws:ssm:us-east-1:522295397264:parameter/testapp01/project_code",
+			"id":              "/testapp01/project_code",
+			"name":            "/testapp01/project_code",
+			"type":            "String",
+			"value":           "testapp01",
+			"version":         2,
+			"with_decryption": true,
+		},
+	},
+}
