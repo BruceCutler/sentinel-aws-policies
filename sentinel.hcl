@@ -17,11 +17,11 @@ module "aws-functions" {
 ## Networking Policies
 policy "enforce-vpc-cidr-block-prefix" {
   source = "./networking/enforce-vpc-cidr-block-prefix.sentinel"
-  enforcement_level = "mandatory"
+  enforcement_level = "hard-mandatory"
 }
 
 ## ECS Policies
 policy "enforce-ecs-cluster-from-module-registry" {
   source = "./ecs/enforce-ecs-cluster-from-module-registry.sentinel"
-  enforcement_level = "mandatory"
+  enforcement_level = "hard-mandatory"
 }
