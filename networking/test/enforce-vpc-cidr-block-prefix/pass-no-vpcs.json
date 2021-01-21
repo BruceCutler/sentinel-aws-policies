@@ -1,0 +1,19 @@
+{
+    "modules": {
+      "tfplan-functions": {
+        "path": "../../../modules/common_functions/tfplan-functions/tfplan-functions.sentinel"
+      },
+      "tfconfig-functions": {
+        "path": "../../../modules/common_functions/tfconfig-functions/tfconfig-functions.sentinel"
+      },
+      "aws-functions": {
+        "path": "../../../modules/aws_functions/aws-functions.sentinel"
+      }
+    },
+    "mock": {
+      "tfplan/v2": "mock-tfplan-v2-pass-no-vpcs.sentinel"
+    },
+    "test": {
+      "main": true
+    }
+  }
