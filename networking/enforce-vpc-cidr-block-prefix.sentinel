@@ -1,0 +1,18 @@
+import "tfplan-functions" as plan
+import "strings"
+
+# Discover any AWS VPCs in the Terraform plan
+aws_vpc_in_plan = plan.find_resources("aws_vpc")
+
+# Evaluate every VPC and validate that the cidr_block attribute starts with "10.*" using
+# the filter_attribute_does_not_have_prefix function from the tfplan-functions module
+violating_vpcs = plan.filter_attribute_does_not_have_prefix(
+    aws_vpc_in_plan,
+    "cidr_block",
+    "10.",
+    true,
+)
+
+main = rule {
+    length(violating_vpcs["messages"]) is 0
+}
