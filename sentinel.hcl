@@ -14,7 +14,7 @@ module "aws-functions" {
   source = "./aws_functions/aws-functions.sentinel"
 }
 
-policy "enforce-mandatory-tags" {
-  source = "./enforce-mandatory-tags.sentinel"
-  enforcement_level = "advisory"
+policy "enforce-ecs-cluster-from-module-registry" {
+  source = "./ecs/enforce-ecs-cluster-from-module-registry.sentinel"
+  enforcement_level = "mandatory"
 }
