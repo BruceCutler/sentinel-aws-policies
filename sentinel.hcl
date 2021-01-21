@@ -1,17 +1,17 @@
 module "tfplan-functions" {
-  source = "modules/common_functions/tfplan-functions/tfplan-functions.sentinel"
+  source = "./modules/common_functions/tfplan-functions/tfplan-functions.sentinel"
 }
 
 module "tfstate-functions" {
-  source = "modules/common_functions/tfstate-functions/tfstate-functions.sentinel"
+  source = "./modules/common_functions/tfstate-functions/tfstate-functions.sentinel"
 }
 
 module "tfconfig-functions" {
-  source = "modules/common_functions/tfconfig-functions/tfconfig-functions.sentinel"
+  source = "./modules/common_functions/tfconfig-functions/tfconfig-functions.sentinel"
 }
 
 module "aws-functions" {
-  source = "./aws_functions/aws-functions.sentinel"
+  source = "./modules/aws_functions/aws-functions.sentinel"
 }
 
 ## Networking Policies
