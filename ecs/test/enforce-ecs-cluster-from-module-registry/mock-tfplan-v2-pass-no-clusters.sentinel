@@ -1,0 +1,630 @@
+terraform_version = "0.14.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_subnet.subnet_a": {
+			"address":        "aws_subnet.subnet_a",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "subnet_a",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_subnet",
+			"values": {
+				"assign_ipv6_address_on_creation": false,
+				"cidr_block":                      "10.50.0.0/24",
+				"ipv6_cidr_block":                 null,
+				"map_public_ip_on_launch":         false,
+				"outpost_arn":                     null,
+				"tags": {
+					"CostCenter":  "1234",
+					"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+					"Name":        "dev-testapp01-sub0",
+					"ProjectCode": "testapp01",
+				},
+				"timeouts": null,
+			},
+		},
+		"aws_subnet.subnet_b": {
+			"address":        "aws_subnet.subnet_b",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "subnet_b",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_subnet",
+			"values": {
+				"assign_ipv6_address_on_creation": false,
+				"cidr_block":                      "10.50.1.0/25",
+				"ipv6_cidr_block":                 null,
+				"map_public_ip_on_launch":         false,
+				"outpost_arn":                     null,
+				"tags": {
+					"CostCenter":  "1234",
+					"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+					"Name":        "dev-testapp01-sub1",
+					"ProjectCode": "testapp01",
+				},
+				"timeouts": null,
+			},
+		},
+		"aws_vpc.new_vpc": {
+			"address":        "aws_vpc.new_vpc",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "new_vpc",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_vpc",
+			"values": {
+				"assign_generated_ipv6_cidr_block": false,
+				"cidr_block":                       "10.50.0.0/16",
+				"enable_dns_support":               true,
+				"instance_tenancy":                 "default",
+				"tags": {
+					"CostCenter":  "1234",
+					"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+					"Name":        "dev-testapp01-vpc",
+					"ProjectCode": "testapp01",
+				},
+			},
+		},
+	},
+}
+
+variables = {
+	"application_name": {
+		"name":  "application_name",
+		"value": "testapp01",
+	},
+	"aws_region": {
+		"name":  "aws_region",
+		"value": "us-east-1",
+	},
+	"env": {
+		"name":  "env",
+		"value": "dev",
+	},
+}
+
+resource_changes = {
+	"aws_subnet.subnet_a": {
+		"address": "aws_subnet.subnet_a",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"assign_ipv6_address_on_creation": false,
+				"cidr_block":                      "10.50.0.0/24",
+				"ipv6_cidr_block":                 null,
+				"map_public_ip_on_launch":         false,
+				"outpost_arn":                     null,
+				"tags": {
+					"CostCenter":  "1234",
+					"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+					"Name":        "dev-testapp01-sub0",
+					"ProjectCode": "testapp01",
+				},
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"arn":                  true,
+				"availability_zone":    true,
+				"availability_zone_id": true,
+				"id": true,
+				"ipv6_cidr_block_association_id": true,
+				"owner_id":                       true,
+				"tags":                           {},
+				"vpc_id":                         true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "subnet_a",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_subnet",
+	},
+	"aws_subnet.subnet_b": {
+		"address": "aws_subnet.subnet_b",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"assign_ipv6_address_on_creation": false,
+				"cidr_block":                      "10.50.1.0/25",
+				"ipv6_cidr_block":                 null,
+				"map_public_ip_on_launch":         false,
+				"outpost_arn":                     null,
+				"tags": {
+					"CostCenter":  "1234",
+					"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+					"Name":        "dev-testapp01-sub1",
+					"ProjectCode": "testapp01",
+				},
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"arn":                  true,
+				"availability_zone":    true,
+				"availability_zone_id": true,
+				"id": true,
+				"ipv6_cidr_block_association_id": true,
+				"owner_id":                       true,
+				"tags":                           {},
+				"vpc_id":                         true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "subnet_b",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_subnet",
+	},
+	"aws_vpc.new_vpc": {
+		"address": "aws_vpc.new_vpc",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"assign_generated_ipv6_cidr_block": false,
+				"cidr_block":                       "10.50.0.0/16",
+				"enable_dns_support":               true,
+				"instance_tenancy":                 "default",
+				"tags": {
+					"CostCenter":  "1234",
+					"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+					"Name":        "dev-testapp01-vpc",
+					"ProjectCode": "testapp01",
+				},
+			},
+			"after_unknown": {
+				"arn": true,
+				"default_network_acl_id":         true,
+				"default_route_table_id":         true,
+				"default_security_group_id":      true,
+				"dhcp_options_id":                true,
+				"enable_classiclink":             true,
+				"enable_classiclink_dns_support": true,
+				"enable_dns_hostnames":           true,
+				"id": true,
+				"ipv6_association_id": true,
+				"ipv6_cidr_block":     true,
+				"main_route_table_id": true,
+				"owner_id":            true,
+				"tags":                {},
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "new_vpc",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_vpc",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"references": [
+							"var.aws_region",
+						],
+					},
+				},
+				"name": "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_subnet.subnet_a",
+					"expressions": {
+						"cidr_block": {
+							"constant_value": "10.50.0.0/24",
+						},
+						"tags": {
+							"references": [
+								"var.env",
+								"var.application_name",
+								"data.aws_ssm_parameter.project_code",
+								"data.aws_ssm_parameter.cost_center",
+								"data.aws_caller_identity.current",
+							],
+						},
+						"vpc_id": {
+							"references": [
+								"aws_vpc.new_vpc",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "subnet_a",
+					"provider_config_key": "aws",
+					"schema_version":      1,
+					"type":                "aws_subnet",
+				},
+				{
+					"address": "aws_subnet.subnet_b",
+					"expressions": {
+						"cidr_block": {
+							"constant_value": "10.50.1.0/25",
+						},
+						"tags": {
+							"references": [
+								"var.env",
+								"var.application_name",
+								"data.aws_ssm_parameter.project_code",
+								"data.aws_ssm_parameter.cost_center",
+								"data.aws_caller_identity.current",
+							],
+						},
+						"vpc_id": {
+							"references": [
+								"aws_vpc.new_vpc",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "subnet_b",
+					"provider_config_key": "aws",
+					"schema_version":      1,
+					"type":                "aws_subnet",
+				},
+				{
+					"address": "aws_vpc.new_vpc",
+					"expressions": {
+						"cidr_block": {
+							"constant_value": "10.50.0.0/16",
+						},
+						"instance_tenancy": {
+							"constant_value": "default",
+						},
+						"tags": {
+							"references": [
+								"var.env",
+								"var.application_name",
+								"data.aws_ssm_parameter.project_code",
+								"data.aws_ssm_parameter.cost_center",
+								"data.aws_caller_identity.current",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "new_vpc",
+					"provider_config_key": "aws",
+					"schema_version":      1,
+					"type":                "aws_vpc",
+				},
+				{
+					"address":             "data.aws_caller_identity.current",
+					"mode":                "data",
+					"name":                "current",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_caller_identity",
+				},
+				{
+					"address": "data.aws_ssm_parameter.cost_center",
+					"expressions": {
+						"name": {
+							"references": [
+								"var.application_name",
+							],
+						},
+					},
+					"mode":                "data",
+					"name":                "cost_center",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_ssm_parameter",
+				},
+				{
+					"address": "data.aws_ssm_parameter.project_code",
+					"expressions": {
+						"name": {
+							"references": [
+								"var.application_name",
+							],
+						},
+					},
+					"mode":                "data",
+					"name":                "project_code",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_ssm_parameter",
+				},
+			],
+			"variables": {
+				"application_name": {},
+				"aws_region": {
+					"default": "us-east-1",
+				},
+				"env": {},
+			},
+		},
+	},
+	"format_version": "0.1",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_subnet.subnet_a",
+					"mode":           "managed",
+					"name":           "subnet_a",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 1,
+					"type":           "aws_subnet",
+					"values": {
+						"assign_ipv6_address_on_creation": false,
+						"cidr_block":                      "10.50.0.0/24",
+						"ipv6_cidr_block":                 null,
+						"map_public_ip_on_launch":         false,
+						"outpost_arn":                     null,
+						"tags": {
+							"CostCenter":  "1234",
+							"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+							"Name":        "dev-testapp01-sub0",
+							"ProjectCode": "testapp01",
+						},
+						"timeouts": null,
+					},
+				},
+				{
+					"address":        "aws_subnet.subnet_b",
+					"mode":           "managed",
+					"name":           "subnet_b",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 1,
+					"type":           "aws_subnet",
+					"values": {
+						"assign_ipv6_address_on_creation": false,
+						"cidr_block":                      "10.50.1.0/25",
+						"ipv6_cidr_block":                 null,
+						"map_public_ip_on_launch":         false,
+						"outpost_arn":                     null,
+						"tags": {
+							"CostCenter":  "1234",
+							"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+							"Name":        "dev-testapp01-sub1",
+							"ProjectCode": "testapp01",
+						},
+						"timeouts": null,
+					},
+				},
+				{
+					"address":        "aws_vpc.new_vpc",
+					"mode":           "managed",
+					"name":           "new_vpc",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 1,
+					"type":           "aws_vpc",
+					"values": {
+						"assign_generated_ipv6_cidr_block": false,
+						"cidr_block":                       "10.50.0.0/16",
+						"enable_dns_support":               true,
+						"instance_tenancy":                 "default",
+						"tags": {
+							"CostCenter":  "1234",
+							"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+							"Name":        "dev-testapp01-vpc",
+							"ProjectCode": "testapp01",
+						},
+					},
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "0.1",
+		"terraform_version": "0.14.4",
+		"values": {
+			"root_module": {
+				"resources": [
+					{
+						"address":        "data.aws_caller_identity.current",
+						"mode":           "data",
+						"name":           "current",
+						"provider_name":  "registry.terraform.io/hashicorp/aws",
+						"schema_version": 0,
+						"type":           "aws_caller_identity",
+						"values": {
+							"account_id": "522295397264",
+							"arn":        "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+							"id":         "522295397264",
+							"user_id":    "AROAXTGZ3JOIFPJFU7FQ2:bruce.cutler@slalom.com",
+						},
+					},
+					{
+						"address":        "data.aws_ssm_parameter.cost_center",
+						"mode":           "data",
+						"name":           "cost_center",
+						"provider_name":  "registry.terraform.io/hashicorp/aws",
+						"schema_version": 0,
+						"type":           "aws_ssm_parameter",
+						"values": {
+							"arn":             "arn:aws:ssm:us-east-1:522295397264:parameter/testapp01/cost_center",
+							"id":              "/testapp01/cost_center",
+							"name":            "/testapp01/cost_center",
+							"type":            "String",
+							"value":           "1234",
+							"version":         1,
+							"with_decryption": true,
+						},
+					},
+					{
+						"address":        "data.aws_ssm_parameter.project_code",
+						"mode":           "data",
+						"name":           "project_code",
+						"provider_name":  "registry.terraform.io/hashicorp/aws",
+						"schema_version": 0,
+						"type":           "aws_ssm_parameter",
+						"values": {
+							"arn":             "arn:aws:ssm:us-east-1:522295397264:parameter/testapp01/project_code",
+							"id":              "/testapp01/project_code",
+							"name":            "/testapp01/project_code",
+							"type":            "String",
+							"value":           "testapp01",
+							"version":         2,
+							"with_decryption": true,
+						},
+					},
+				],
+			},
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_subnet.subnet_a",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"assign_ipv6_address_on_creation": false,
+					"cidr_block":                      "10.50.0.0/24",
+					"ipv6_cidr_block":                 null,
+					"map_public_ip_on_launch":         false,
+					"outpost_arn":                     null,
+					"tags": {
+						"CostCenter":  "1234",
+						"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+						"Name":        "dev-testapp01-sub0",
+						"ProjectCode": "testapp01",
+					},
+					"timeouts": null,
+				},
+				"after_unknown": {
+					"arn":                  true,
+					"availability_zone":    true,
+					"availability_zone_id": true,
+					"id": true,
+					"ipv6_cidr_block_association_id": true,
+					"owner_id":                       true,
+					"tags":                           {},
+					"vpc_id":                         true,
+				},
+				"before": null,
+			},
+			"mode":          "managed",
+			"name":          "subnet_a",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_subnet",
+		},
+		{
+			"address": "aws_subnet.subnet_b",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"assign_ipv6_address_on_creation": false,
+					"cidr_block":                      "10.50.1.0/25",
+					"ipv6_cidr_block":                 null,
+					"map_public_ip_on_launch":         false,
+					"outpost_arn":                     null,
+					"tags": {
+						"CostCenter":  "1234",
+						"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+						"Name":        "dev-testapp01-sub1",
+						"ProjectCode": "testapp01",
+					},
+					"timeouts": null,
+				},
+				"after_unknown": {
+					"arn":                  true,
+					"availability_zone":    true,
+					"availability_zone_id": true,
+					"id": true,
+					"ipv6_cidr_block_association_id": true,
+					"owner_id":                       true,
+					"tags":                           {},
+					"vpc_id":                         true,
+				},
+				"before": null,
+			},
+			"mode":          "managed",
+			"name":          "subnet_b",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_subnet",
+		},
+		{
+			"address": "aws_vpc.new_vpc",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"assign_generated_ipv6_cidr_block": false,
+					"cidr_block":                       "10.50.0.0/16",
+					"enable_dns_support":               true,
+					"instance_tenancy":                 "default",
+					"tags": {
+						"CostCenter":  "1234",
+						"CreatedBy":   "arn:aws:sts::522295397264:assumed-role/AWS-InnovationLabs-Boston-Admin/bruce.cutler@slalom.com",
+						"Name":        "dev-testapp01-vpc",
+						"ProjectCode": "testapp01",
+					},
+				},
+				"after_unknown": {
+					"arn": true,
+					"default_network_acl_id":         true,
+					"default_route_table_id":         true,
+					"default_security_group_id":      true,
+					"dhcp_options_id":                true,
+					"enable_classiclink":             true,
+					"enable_classiclink_dns_support": true,
+					"enable_dns_hostnames":           true,
+					"id": true,
+					"ipv6_association_id": true,
+					"ipv6_cidr_block":     true,
+					"main_route_table_id": true,
+					"owner_id":            true,
+					"tags":                {},
+				},
+				"before": null,
+			},
+			"mode":          "managed",
+			"name":          "new_vpc",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_vpc",
+		},
+	],
+	"terraform_version": "0.14.4",
+	"variables": {
+		"application_name": {
+			"value": "testapp01",
+		},
+		"aws_region": {
+			"value": "us-east-1",
+		},
+		"env": {
+			"value": "dev",
+		},
+	},
+}

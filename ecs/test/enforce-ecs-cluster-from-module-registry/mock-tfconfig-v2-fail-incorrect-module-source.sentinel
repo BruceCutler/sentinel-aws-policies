@@ -1,0 +1,220 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"references": [
+					"var.aws_region",
+				],
+			},
+		},
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"module.ecs-cluster.aws_ecs_cluster.new_cluster": {
+		"address": "module.ecs-cluster.aws_ecs_cluster.new_cluster",
+		"config": {
+			"capacity_providers": {
+				"constant_value": [
+					"FARGATE",
+				],
+			},
+			"name": {
+				"references": [
+					"var.application_name",
+					"var.environment",
+					"var.cluster_identifier",
+				],
+			},
+			"setting": [
+				{
+					"name": {
+						"constant_value": "containerInsights",
+					},
+					"value": {
+						"constant_value": "enabled",
+					},
+				},
+			],
+			"tags": {
+				"references": [
+					"var.custom_tags",
+					"local.mandatory_tags",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.ecs-cluster",
+		"name":                "new_cluster",
+		"provider_config_key": "module.ecs-cluster:aws",
+		"provisioners":        [],
+		"type":                "aws_ecs_cluster",
+	},
+	"module.ecs-cluster.data.aws_caller_identity.current": {
+		"address":             "module.ecs-cluster.data.aws_caller_identity.current",
+		"config":              {},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "module.ecs-cluster",
+		"name":                "current",
+		"provider_config_key": "module.ecs-cluster:aws",
+		"provisioners":        [],
+		"type":                "aws_caller_identity",
+	},
+	"module.ecs-cluster.data.aws_ssm_parameter.cost_center": {
+		"address": "module.ecs-cluster.data.aws_ssm_parameter.cost_center",
+		"config": {
+			"name": {
+				"references": [
+					"var.application_name",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "module.ecs-cluster",
+		"name":                "cost_center",
+		"provider_config_key": "module.ecs-cluster:aws",
+		"provisioners":        [],
+		"type":                "aws_ssm_parameter",
+	},
+	"module.ecs-cluster.data.aws_ssm_parameter.project_code": {
+		"address": "module.ecs-cluster.data.aws_ssm_parameter.project_code",
+		"config": {
+			"name": {
+				"references": [
+					"var.application_name",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "module.ecs-cluster",
+		"name":                "project_code",
+		"provider_config_key": "module.ecs-cluster:aws",
+		"provisioners":        [],
+		"type":                "aws_ssm_parameter",
+	},
+}
+
+provisioners = {}
+
+variables = {
+	"application_name": {
+		"default":        null,
+		"description":    "",
+		"module_address": "",
+		"name":           "application_name",
+	},
+	"aws_region": {
+		"default":        "us-east-1",
+		"description":    "",
+		"module_address": "",
+		"name":           "aws_region",
+	},
+	"ecs_cluster_identifier": {
+		"default":        null,
+		"description":    "",
+		"module_address": "",
+		"name":           "ecs_cluster_identifier",
+	},
+	"env": {
+		"default":        null,
+		"description":    "",
+		"module_address": "",
+		"name":           "env",
+	},
+	"module.ecs-cluster:application_name": {
+		"default":        null,
+		"description":    "Name of the application that the ECS Cluster will be created for",
+		"module_address": "module.ecs-cluster",
+		"name":           "application_name",
+	},
+	"module.ecs-cluster:cluster_identifier": {
+		"default":        null,
+		"description":    "Unique identifier for the new ECS Cluster",
+		"module_address": "module.ecs-cluster",
+		"name":           "cluster_identifier",
+	},
+	"module.ecs-cluster:custom_tags": {
+		"default":        {},
+		"description":    "Additional tags to add to the new ECS Cluster resource",
+		"module_address": "module.ecs-cluster",
+		"name":           "custom_tags",
+	},
+	"module.ecs-cluster:environment": {
+		"default":        null,
+		"description":    "Environment level that the ECS Cluster is being created for",
+		"module_address": "module.ecs-cluster",
+		"name":           "environment",
+	},
+}
+
+outputs = {
+	"module.ecs-cluster:new_cluster_arn": {
+		"depends_on":     [],
+		"description":    "Amazon Resource Name (ARN) of new ECS Cluster",
+		"module_address": "module.ecs-cluster",
+		"name":           "new_cluster_arn",
+		"sensitive":      false,
+		"value": {
+			"references": [
+				"aws_ecs_cluster.new_cluster",
+			],
+		},
+	},
+}
+
+module_calls = {
+	"ecs-cluster": {
+		"config": {
+			"application_name": {
+				"references": [
+					"var.application_name",
+				],
+			},
+			"cluster_identifier": {
+				"references": [
+					"var.ecs_cluster_identifier",
+				],
+			},
+			"environment": {
+				"references": [
+					"var.env",
+				],
+			},
+		},
+		"count":              {},
+		"depends_on":         [],
+		"for_each":           {},
+		"module_address":     "",
+		"name":               "ecs-cluster",
+		"source":             "incorrect-ecs-cluster-module-source",
+		"version_constraint": "0.0.2",
+	},
+}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

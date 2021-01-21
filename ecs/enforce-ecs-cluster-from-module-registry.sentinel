@@ -7,7 +7,7 @@ violatingResources = []
 
 ### extract_module_name ###
 # Retrieve the module name from the module address, taking the last token
-# to account for scenarios where nested modules exist
+# to account for scenarios where nested modules exist (module.modulea.module.moduleb... etc.)
 extract_module_name = func(resource_module_address) {
     module_address_list = strings.split(resource_module_address, ".")
     module_address_list_length = length(module_address_list)

@@ -11,8 +11,8 @@
     }
   },
   "mock": {
-    "tfplan/v2": "mock-tfplan-v2-pass.sentinel",
-    "tfconfig/v2": "mock-tfconfig-v2-pass.sentinel"
+    "tfplan/v2": "mock-tfplan-v2-pass-no-clusters.sentinel",
+    "tfconfig/v2": "mock-tfconfig-v2-pass-no-clusters.sentinel"
   },
   "test": {
     "main": true
